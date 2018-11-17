@@ -18,6 +18,7 @@ gem 'record_tag_helper', '~> 1.0'
 gem 'algoliasearch-rails', '~> 1.20', '>= 1.20.4'
 
 group :development, :test do
+  gem 'rubocop', '~> 0.60.0', require: false
 	gem "dotenv-rails", "~>2.2"
 	gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
