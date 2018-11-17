@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 def this_many
-    ENV.fetch('USERS', 100).to_i
+  ENV.fetch('USERS', 100).to_i
 end
 
 Post.clear_index!

@@ -27,3 +27,4 @@
 
 .env
 Gemfile.lock
+*.sqlite3
