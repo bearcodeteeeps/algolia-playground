@@ -1,31 +1,24 @@
-### Rails docker implementation
+# README
 
-- Rails 5.2.0
-- Postgres
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-To get started:
+Things you may want to cover:
 
-1. Clone this repo into a new named folder
-1. Open the folder and run `docker-compose run web rails new . --force --database=postgresql`
-1. On linux run `sudo chown -R $USER:$USER .`
-1. Change `database.yml` localhost to:
-```yml
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  host: db
-  username: postgres
-  pool: 5
+* Ruby version
 
-development:
-  <<: *default
-  database: myapp_development
+* System dependencies
 
+* Configuration
 
-test:
-  <<: *default
-  database: myapp_test
-```
-1. Build the containers `docker-compose build`
-1. Finally you need to create the database `docker-compose run web rake db:create
-`
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
