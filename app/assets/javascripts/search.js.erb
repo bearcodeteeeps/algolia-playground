@@ -1,0 +1,31 @@
+
+function instant_search(user_api_key, index_name) {
+	const search = instantsearch({
+		appId: '<%= ENV["ALGOLIA_APPLICATION_ID"] %>',
+		apiKey: user_api_key,
+		indexName: index_name,
+		routing: true
+	});
+
+	 // initialize SearchBox
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search',
+      placeholder: 'Search for posts'
+    })
+  );
+
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#hits-container',
+      templates: {
+        empty: 'No results',
+        item: postTemplate
+      }
+    })
+  );
+
+	search.start();
+}
+
+var postTemplate = '<strong>Hit {{objectID}}</strong>: {{{_highlightResult.title.value}}}'

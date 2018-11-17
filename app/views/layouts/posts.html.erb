@@ -1,0 +1,19 @@
+<% content_for(:head) do %>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4/dist/instantsearch.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4/dist/instantsearch-theme-algolia.min.css">
+<% end %>
+<% content_for :grid do %>
+  <div class='col-md-8'>
+  	<%= yield %>
+  </div>
+  <div class='col-md-4'>
+  	<div id="search"></div>
+  	<div id="hits-container"></div>
+  	<div id="pagination"></div>
+  </div>
+<% end %>
+<% content_for :search do %>
+  <%= javascript_tag "instant_search('#{user_api_key}', 'Post_development')" %>
+<% end %>
+<%= render template: "layouts/application" %>

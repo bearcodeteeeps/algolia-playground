@@ -1,5 +1,11 @@
 class PostsController < ApplicationController
+  layout "posts"
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  helper_method :user_api_key
+
+  def user_api_key
+    Algolia.generate_secured_api_key( ENV.fetch("ALGOLIA_SEARCH_ONLY_API_KEY"), {filters: "user_id:#{current_user.id.to_s}"} )
+  end
 
   # GET /posts
   # GET /posts.json
@@ -42,7 +48,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to :posts, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -71,4 +77,4 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :body, :published, :user_id)
     end
-end
+  end
