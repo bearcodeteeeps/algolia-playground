@@ -2,7 +2,7 @@
 
 # README
 
-This sample application is for using the `algolia-rails` gem.
+This sample application is for using the `algolia-rails` gem - It points to a multi-tennanted fork of the gem that I have written.
 
 ![](algolia_playground.gif)
 
@@ -12,17 +12,19 @@ To get started clone this repo:
 
 Duplicate `.env.example` to `.env` and add your algolia credentials.
 
-Setup the database - this will run seeds and put index data to Algolia.
-
-You can specify the number of users you want:
+You just need to migrate the database and run the server
 
 ```bash
-rails db:migrate
+rails db:migrate && rails s
 ```
 
-Use devise to sign in at localhost:3000
+## Setting Up Tenants
 
-Now - note your subdomain. You should migrate again because I am using sqlite3 and I get an error if I don't migrate.
+Use devise to sign in at localhost:3000 - fill in the `subdomain field` Now - note your subdomain.
+
+You should migrate again because I am using sqlite3 and I get an error if I don't migrate because of connection pooling.
+
+## Go to your Subdomain
 
 Once you create your account go to
 
@@ -30,9 +32,18 @@ Once you create your account go to
 
 Start to create `Posts` - only the published ones will go to algolia.
 
+## Algolia Dashboard
+
 Expect to see an index `#{sub_domain}_Post_development`.
 
-You should be able to create new indices for every subdomain.
+## Multi-Tennancy
+
+A new index should be created for every model and every subdomain that includes the code:
+
+```ruby
+algoliasearch per_environment: true, if: :published?, per_tenant: Proc.new { Apartment::Tenant.current } do
+end
+```
 
 
 
