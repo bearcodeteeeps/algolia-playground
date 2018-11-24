@@ -15,7 +15,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'bootstrap-generators', '~> 3.3.4'
 gem 'record_tag_helper', '~> 1.0'
-gem 'algoliasearch-rails', '~> 1.20', '>= 1.20.4'
+gem 'algoliasearch-rails', path: 'vendor/gems/algoliasearch-rails'
+gem 'apartment'
 
 group :development, :test do
   gem 'rubocop', '~> 0.60.0', require: false
@@ -24,6 +25,8 @@ group :development, :test do
 end
 
 group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
 	gem 'web-console', '>= 3.3.0'
 	gem 'listen', '>= 3.0.5', '< 3.2'
 	gem 'spring'

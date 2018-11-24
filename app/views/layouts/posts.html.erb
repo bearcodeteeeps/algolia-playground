@@ -14,6 +14,6 @@
   </div>
 <% end %>
 <% content_for :search do %>
-  <%= javascript_tag "instant_search('#{user_api_key}', 'Post_development')" %>
+  <%= javascript_tag "instant_search('#{user_api_key}', '#{current_user.subdomain}_Post_#{Rails.env}')" %>
 <% end %>
 <%= render template: "layouts/application" %>
