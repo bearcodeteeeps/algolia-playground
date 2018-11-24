@@ -17,22 +17,23 @@ Setup the database - this will run seeds and put index data to Algolia.
 You can specify the number of users you want:
 
 ```bash
-rails db:setup USERS=2
+rails db:migrate
 ```
 
-User emails are in odd numbers from 0 - `sample0@user.com, sample2@user.com` and the password is `sampleuser`
+Use devise to sign in at localhost:3000
 
-Now the app is ready to boot!
+Now - note your subdomain. You should migrate again because I am using sqlite3 and I get an error if I don't migrate.
 
-```
-rails s
-```
+Once you create your account go to
 
-## Optional Docker
+`<subdomain>.lvh.me:3000`
 
-You can use the DockerFile with postgres if you setup a `database.yml` from `database.docker.yml`
+Start to create `Posts` - only the published ones will go to algolia.
 
-```
-docker-compose up
-docker exec algoliaplayground_web_1 rails db:setup USERS=2
-```
+Expect to see an index `#{sub_domain}_Post_development`.
+
+You should be able to create new indices for every subdomain.
+
+
+
+
