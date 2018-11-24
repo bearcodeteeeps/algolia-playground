@@ -15,7 +15,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'bootstrap-generators', '~> 3.3.4'
 gem 'record_tag_helper', '~> 1.0'
-gem 'algoliasearch-rails', path: 'vendor/gems/algoliasearch-rails'
+gem 'algoliasearch-rails', git: 'https://github.com/simonireilly/algoliasearch-rails.git', branch: 'issue/320_index_name_based_current_tenant'
 gem 'apartment'
 
 group :development, :test do
